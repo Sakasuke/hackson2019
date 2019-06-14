@@ -101,59 +101,34 @@ p {
 input[type=range]::-webkit-slider-runnable-track {
 
   width: 100%;
-
-  height: 12px;
-
+  height: 200px;
   cursor: pointer;
-
   animate: 0.2s;
-
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-
   background: #cccccc;
-
   border-radius: 1.3px;
-
   border: 1px solid #010101;
-
 }
 
 /* WebKit・Blink向け つまみのスタイル */
 
 input[type=range]::-webkit-slider-thumb {
-
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-
   border: 1px solid #000000;
-
-  height: 300px;
-
-  width: 300px;
-
+  height: 200px;
+  width: 200px;
   border-radius: 50%;
-
   background: #ffffff;
-
   cursor: pointer;
-
   -webkit-appearance: none;
-
-  /* 以下は つまみの縦位置調整 */
-
-  margin-top: -14px;  /* (つまみの高さ - トラックの高さ) / 2 。つまみの高さは border を含む */	
-
 }
-
-
 
 /* 何故か上の margin-top 指定が Edge に効いてしまうので、Edge向けに設定をリセット */
 
 @supports (-ms-ime-align: auto) {
 
     input[type=range]::-webkit-slider-thumb {
-
         margin-top: 0 !important;
-
     }
 
 }
@@ -297,40 +272,24 @@ input[type=range]:focus::-ms-fill-lower {
 /* Edge・IE向け focus時の色（つまみより右側） */
 
 input[type=range]:focus::-ms-fill-upper {
-
   background: #999999;
-
 }
-
 
 
 /* Edge・IE向け ポップアップを非表示に */
 
 input[type=range]::-ms-tooltip {
-
   display: none;
-
 }
-
 
 
 input[type=range][orient=vertical]
-
 {
-
     writing-mode: bt-lr; /* IE */
-
-    -webkit-appearance: slider-vertical; /* WebKit */
-
-    width: 8px;
-
+    -webkit-appearance: none; /* WebKit */
+    width: 550px;
     height: 175px;
-
-    padding: 0 5px;
-
 }
-
-
 
 /* 左モーターの操作盤 */
 
@@ -338,6 +297,7 @@ input[type=range][orient=vertical]
   float:left;
   margin: 0 0 0 5%; 
   font-size: 3em;
+  transform: rotate(90deg);
 }
 
 /* 右モーターの操作盤 */
@@ -346,15 +306,37 @@ input[type=range][orient=vertical]
   font-size: 3em;
   margin-right: 5%;
   float:right;
+  transform: rotate(90deg);
 }
 
-
+.ctl-nest01{
+  display: flex;
+  height: 90vw;
+  width: 100%;
+  justify-content: center;
+}
+.ctl-nest02{
+  display: flex;
+  position: relative;
+  width: 100%;
+  justify-content: space-around;
+}
+.ctl-child{
+  transform: rotate(90deg);
+  height: 20%;
+  position: abusolute;
+}
+.ctl-child01{
+  position: relative;
+  top: 30%;
+}
+.ctl-child02{
+  position: relative;
+  top: 30%;
+}
 
 .manual_zone {
-  float:left; 
-  padding:40% 0 5% 5%; 
-  font-size: 1.2em;
- 
+  font-size: 2em;
 }
 
 #manual {
@@ -363,4 +345,13 @@ input[type=range][orient=vertical]
 
 .motor_text{
   margin-bottom: 20px;
+}
+
+div#right_value, div#left_value{
+  transform: rotate(-90deg);
+  width: 50px;
+  bottom: 50%;
+  right: -20%;
+  position: absolute;
+  font-size: 5vw;
 }
